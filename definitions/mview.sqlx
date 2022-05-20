@@ -5,4 +5,5 @@ config {
     name: 'mview_example'
 } 
     
-SELECT * from ${ref("partitioned_table")} where rownum <= 10000
+SELECT * from ${ref("partitioned_table")} 
+where row_num <= 10000
