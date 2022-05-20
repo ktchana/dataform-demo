@@ -1,0 +1,7 @@
+config {
+  type: "declaration",
+  database: "adm-data-raw",
+  schema: "dataform",
+  name: "fake_accounts",
+  description: "Existing data in BigQuery"
+}

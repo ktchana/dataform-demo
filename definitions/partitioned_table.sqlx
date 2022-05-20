@@ -1,0 +1,10 @@
+config {
+  type: "table",
+  bigquery: {
+    partitionBy: "RANGE_BUCKET(<integer_column>, GENERATE_ARRAY(0, 1000000, 1000))",
+    clusterBy: ["comp_name", "name"]
+  }
+}
+
+select *
+from ${ref("fake_accounts")}
