@@ -2,12 +2,27 @@
   "environments": [
     {
       "name": "production",
-      "configOverride": {},
+      "configOverride": {
+        "vars": {
+          "myVariableName": "production"
+        }
+      },
       "gitRef": "master"
     },
     {
       "name": "new_environment",
-      "gitRef": "master"
+      "configOverride": {
+        "vars": {
+          "myVariableName": "new_environment"
+        }
+      },
+      "schedules": [
+        {
+          "name": "new_schedule",
+          "cron": "41 16 * * *"
+        }
+      ],
+      "gitRef": "dataform_ktchana_dev"
     }
   ]
 }
