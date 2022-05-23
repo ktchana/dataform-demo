@@ -2,5 +2,8 @@
     "warehouse": "bigquery",
     "defaultSchema": "dataform",
     "assertionSchema": "dataform_assertions",
-    "defaultDatabase": "adm-data-raw"
+    "defaultDatabase": "adm-data-raw",
+    "vars": {
+        "myVariableName": "myVariableValue"
+    }
 }
