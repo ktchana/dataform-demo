@@ -16,6 +16,12 @@
           "myVariableName": "new_environment"
         }
       },
+      "schedules": [
+        {
+          "name": "new_schedule",
+          "cron": "41 16 * * *"
+        }
+      ],
       "gitRef": "dataform_ktchana_dev"
     }
   ]
