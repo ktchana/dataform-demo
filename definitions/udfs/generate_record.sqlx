@@ -1,0 +1,21 @@
+config {
+  hasOutput: true,
+  name: "generate_record"
+}
+CREATE OR REPLACE FUNCTION ${self()}(seed INT64)
+RETURNS STRUCT<name String, phone String, ipv6 String, comp_name String, ingestion_date TIMESTAMP>
+LANGUAGE js
+AS """
+ var f = getFaker()
+ f.seed(Number(seed))
+ var t = {};
+ t.name = f.name.findName();
+ t.phone = f.phone.phoneNumber('1-###-###-###')
+ t.ipv6 = f.internet.ipv6();
+ t.comp_name = f.company.companyName();
+ t.ingestion_date = Date(Date.now());
+ return t;
+"""
+OPTIONS (
+   library=["gs://ktchana-sky-dataform-demo/bq_fake.js"]
+);

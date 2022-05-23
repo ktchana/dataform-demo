@@ -1,0 +1,38 @@
+config {
+  type: "incremental",
+  dependencies: [ "append_date_to_source_table" ],
+  bigquery: {
+    partitionBy: "TIMESTAMP_TRUNC(ingestion_date, HOUR)",
+    clusterBy: ["comp_name", "name"]
+  },
+  assertions: {
+    nonNull: ["name", "phone"],
+    uniqueKey: ["row_num"],
+    rowConditions: [
+      "ingestion_date > '2020-05-01'",
+      "REGEXP_CONTAINS(phone, r'^\\d-\\d{3}-\\d{3}-\\d{3}$')"
+    ]
+  },
+  columns: {
+    row_num: "This is a random row_num assigned between 1 to 1000000",
+    name: "Person's name",
+    phone: "Person's phone number",
+    ipv6: "Last known IPv6 address",
+    comp_name: "Company name",
+    ingestion_date: "Timestamp at which this record was ingested"
+  }
+}
+
+pre_operations {
+  declare last_refresh default (
+    ${when(incremental(),
+    `select max(ingestion_date) from ${self()}`,
+    `select timestamp("2000-01-01")`)}
+  )
+}
+
+SELECT *
+FROM ${ref("source_table")}
+
+${when(incremental(), `WHERE ingestion_date > last_refresh`)}
+

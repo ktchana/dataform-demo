@@ -1,0 +1,9 @@
+config { hasOutput: true }
+
+INSERT INTO 
+  ${ref("source_table")}
+SELECT 
+  CAST((RAND() * 1000000) AS INT64), 
+  ${ref("generate_record")}(r + CAST((RAND() * 100000000) AS INT64)).* 
+FROM
+  UNNEST(GENERATE_ARRAY(1, 10)) r

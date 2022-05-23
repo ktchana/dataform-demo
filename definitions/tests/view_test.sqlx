@@ -1,0 +1,30 @@
+config {
+  type: "test",
+  dataset: "view"
+}
+
+input "report_table" {
+  SELECT
+    1 AS row_num, 
+    "Amanda Wiza" as name, 
+    "1-123-123-123" as phone, 
+    "a6ac:806f:fcdc:6a5f:0a1a:75f9:af54:251c" as ipv6, 
+    "Fay Inc" as comp_name,
+    '2022-05-20' as ingestion_date
+  UNION ALL
+  SELECT 
+    2 AS row_num, 
+    "Glennie Gleichner" as name, 
+    "1-345-345-345" as phone, 
+    "79b4:1587:4a39:5ae5:33b2:0ea6:64d2:6033" as ipv6, 
+    "Fay Inc" as comp_name,
+    '2022-05-20' as ingestion_date
+}
+
+SELECT
+  1 AS row_num, 
+  "Amanda Wiza" as name, 
+  "1-123-123-123" as phone, 
+  "a6ac:806f:fcdc:6a5f:0a1a:75f9:af54:251c" as ipv6, 
+  "Fay Inc" as comp_name,
+  '2022-05-20' as ingestion_date

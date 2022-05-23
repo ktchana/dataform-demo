@@ -1,9 +1,0 @@
-config { 
-    type: 'view', 
-    materialized: true,
-    schema: 'myfoo',
-    name: 'mview_example'
-} 
-    
-SELECT * from ${ref("partitioned_table")} 
-where row_num <= 10000

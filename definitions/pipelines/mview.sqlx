@@ -1,0 +1,14 @@
+config { 
+    schema: 'myfoo',
+    name: 'name_starting_with_a',
+    hasOutput: true
+} 
+
+CREATE MATERIALIZED VIEW IF NOT EXISTS
+  ${self()} AS
+SELECT
+  *
+FROM
+  ${ref("report_table")}
+WHERE
+  UPPER(name) LIKE 'A%'

@@ -1,0 +1,13 @@
+config { 
+  hasOutput: true
+}
+
+CREATE TABLE IF NOT EXISTS
+  ${self()} (row_num INTEGER,
+    name STRING,
+    phone STRING,
+    ipv6 STRING,
+    comp_name STRING,
+    ingestion_date TIMESTAMP)
+PARTITION BY
+  TIMESTAMP_TRUNC(ingestion_date, HOUR)
