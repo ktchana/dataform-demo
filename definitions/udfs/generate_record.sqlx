@@ -1,7 +1,10 @@
+-- Copyright 2022 Google. This software is provided as-is, without warranty or representation for any use or purpose. Your use of it is subject to your agreement with Google.  
+
 config {
   hasOutput: true,
   name: "generate_record"
 }
+
 CREATE OR REPLACE FUNCTION ${self()}(seed INT64)
 RETURNS STRUCT<name String, phone String, ipv6 String, comp_name String, ingestion_date TIMESTAMP>
 LANGUAGE js
