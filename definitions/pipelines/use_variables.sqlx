@@ -2,4 +2,6 @@ config {
   type: "view"
 }
 
-select '${dataform.projectConfig.vars.myVariableName}' as test_variable
+select 
+  '${dataform.projectConfig.vars.myVariableName}' as test_variable,
+  current_timestamp() as run_time

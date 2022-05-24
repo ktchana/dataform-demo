@@ -1,0 +1,13 @@
+config {
+  type: "view"
+}
+
+select
+  row_num as row_num,
+  name as name,
+  phone as phone,
+  ipv6 as ipv6,
+  comp_name as comp_name,
+  ingestion_date as ingestion_date
+from 
+  ${ref("source_table")}

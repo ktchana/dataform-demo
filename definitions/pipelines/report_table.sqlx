@@ -32,7 +32,7 @@ pre_operations {
 }
 
 SELECT *
-FROM ${ref("source_table")}
+FROM ${ref("source_table_view")}
 
 ${when(incremental(), `WHERE ingestion_date > last_refresh`)}
 
