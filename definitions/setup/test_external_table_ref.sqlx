@@ -1,0 +1,8 @@
+config {
+  type: "view"
+}
+
+select *
+from 
+  ${ref("test_external_table")}
+

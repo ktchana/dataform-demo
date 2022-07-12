@@ -4,6 +4,6 @@
     "assertionSchema": "dataform_assertions",
     "defaultDatabase": "adm-data-raw",
     "vars": {
-        "myVariableName": "myVariableValue"
+        "org": "skyuk"
     }
 }

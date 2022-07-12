@@ -2,7 +2,7 @@
 
 config {
   type: "incremental",
-  dependencies: [ "append_date_to_source_table" ],
+  //dependencies: [ "append_date_to_source_table" ],
   bigquery: {
     partitionBy: "TIMESTAMP_TRUNC(ingestion_date, HOUR)",
     clusterBy: ["comp_name", "name"]
@@ -33,7 +33,14 @@ pre_operations {
   )
 }
 
-SELECT *
+SELECT
+  row_num as row_num,
+  name as name,
+  phone as phone,
+  ipv6 as ipv6,
+  comp_name as comp_name,
+  ingestion_date as ingestion_date,
+  new_column as new_column
 FROM ${ref("source_table_view")}
 
 ${when(incremental(), `WHERE ingestion_date > last_refresh`)}

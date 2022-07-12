@@ -1,0 +1,6 @@
+config {
+  type: "view"
+}
+
+--${myfunction.getVariable()}
+${gcp_tablelist.gcp_table_list()}
