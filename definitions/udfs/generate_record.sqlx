@@ -22,3 +22,5 @@ AS """
 OPTIONS (
    library=["gs://ktchana-sky-dataform-demo/bq_fake.js"]
 );
+
+SELECT 1;

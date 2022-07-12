@@ -10,6 +10,7 @@ select
   phone as phone,
   ipv6 as ipv6,
   comp_name as comp_name,
-  ingestion_date as ingestion_date
+  ingestion_date as ingestion_date,
+  "1" as new_column
 from 
   ${ref("source_table")}

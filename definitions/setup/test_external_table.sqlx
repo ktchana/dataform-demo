@@ -1,0 +1,15 @@
+-- Copyright 2022 Google. This software is provided as-is, without warranty or representation for any use or purpose. Your use of it is subject to your agreement with Google.  
+
+config { 
+  hasOutput: true
+}
+
+CREATE TABLE IF NOT EXISTS
+  ${self()} (row_num INTEGER,
+    name STRING,
+    phone STRING,
+    ipv6 STRING,
+    comp_name STRING,
+    ingestion_date TIMESTAMP)
+PARTITION BY
+  TIMESTAMP_TRUNC(ingestion_date, HOUR)
